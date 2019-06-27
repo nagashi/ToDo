@@ -52,7 +52,6 @@ $(function() {
 
   });
 
-
   $('#new-form').submit(function(event) {
     event.preventDefault();
     var textbox = $('.new-todo');
@@ -64,9 +63,10 @@ $(function() {
     $.post("/tasks", payload).success(function(data) {
       var htmlString = taskHtml(data);
       var ulTodos = $('.todo-list');
+      var ta = document.getElementsByClassName("new-todo")[0];
       ulTodos.append(htmlString);
       $('.toggle').click(toggleTask);
+      ta.value = "";
     });
   });
-
 }); 
